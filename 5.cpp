@@ -230,7 +230,7 @@ int main()
  		continue;
  	}
  	if(prime(s)||s=="2")cout<<"Prime"<<endl;
- 	else cout<<"Composite"<<endl;
+ 	else cout<<"Not a Prime"<<endl;
  }
  return 0;
 }
