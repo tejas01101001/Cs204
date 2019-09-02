@@ -93,11 +93,12 @@ int main()
     kira;
     lli n;
     cin>>n;
-    lli a[n+1]={0};
+    vector<lli>a(n+1,0);
     pair<lli,lli>maxi;
     maxi={-1,-1};
-    lli q,u,r;
-    while(1)
+    lli query,q,u,r;
+    cin>>query;
+    while(query--)
     {
         cin>>q;
         if(q==1)
@@ -117,7 +118,6 @@ int main()
             }
             else cout<<maxi.F<<endl;
         }
-        else break;
     }
     return 0;
 }
