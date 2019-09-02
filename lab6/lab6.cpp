@@ -91,32 +91,45 @@ lli modi(lli a, lli m)
 int main()
 {
     kira;
-    lli n;
-    cin>>n;
-    vector<lli>a(n+1,0);
-    pair<lli,lli>maxi;
-    maxi={-1,-1};
-    lli query,q,u,r;
-    cin>>query;
-    while(query--)
+    lli n, q;
+    cin >> n >> q;
+    lli que[q][3];
+    lli id[q];
+    lli val[q] = {0};
+    lli temp, flag = 0, maxuid;
+    forz(i, q)
     {
-        cin>>q;
-        if(q==1)
+        cin >> que[i][0];
+        if (que[i][0] == 1)
         {
-            cin>>u>>r;
-            a[u]+=r;
-            if(a[u]>maxi.S)
+            cin >> que[i][1] >> que[i][2];
+            id[i] = que[i][1];
+        }
+    }
+    sort(id, id + q);
+    forz(i, q)
+    {
+        if (que[i][0] == 1)
+        {
+            temp = lb(id, id + q, que[i][1]) - id;
+            val[temp] += que[i][2];
+
+            if (flag == 0)
             {
-                maxi={u,a[u]};
+                flag = 1;
+                maxuid = temp;
+            }
+            else if (val[temp] > val[maxuid])
+            {
+                maxuid = temp;
             }
         }
-        else if(q==2)
+        else
         {
-            if(maxi.F==-1)
-            {
-                cout<<"No data available"<<endl;
-            }
-            else cout<<maxi.F<<endl;
+            if (flag == 0)
+                cout << "No data available" << endl;
+            else
+                cout << id[maxuid] << endl;
         }
     }
     return 0;
