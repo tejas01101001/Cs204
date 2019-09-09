@@ -88,13 +88,6 @@ lli modi(lli a, lli m)
 }
 /*CODE BEGINS*/
 
-bool compare(string a, string b)
-{
-   string t=a+b;
-   if(t>b+a)return true;
-   else return false;
-}
-
 int main()
 {
     kira;
@@ -102,18 +95,28 @@ int main()
     cin >> t;
     while (t--)
     {
+        lli d = -1;
         cin >> q;
-        string s;
-        vector<string> v;
+        string s,t="";
+        vector<pair<string, pair<int,string>>> v;
         for(int i=0;i<q;i++)
         {
             cin >> s;
-            v.pb(s);
+            lli dt=s.si;
+            v.pb(mp(t,mp(s[s.si-1]-'0',s)));
+            if (dt> d)
+                d = dt;
         }
-        sort(v.be, v.en, compare);
-        forz(i, q)
+        for(int i=0;i<q;i++)
         {
-            cout << v[i];
+            while (v[i].F.si <= d)
+                v[i].F += v[i].S.S;
+            v[i].F.resize(d);
+        }
+        sort(v.be, v.en);
+        rforz(i, q)
+        {
+            cout << v[i].S.S;
         }
         cout << endl;
     }
