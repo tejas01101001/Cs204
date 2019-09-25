@@ -90,14 +90,14 @@ lli modi(lli a, lli m)
 }
 
 /*CODE BEGINS*/
-lli partition(lli arr[],lli l,lli r,lli k); 
-lli findMedian(lli arr[],lli n)
+lli partition(lli arr[], lli l, lli r, lli k);
+lli findMedian(lli arr[], lli n)
 {
     sort(arr, arr + n);
     return arr[n / 2];
 }
 
-lli ksmall(lli arr[],lli l,lli r,lli k)
+lli ksmall(lli arr[], lli l, lli r, lli k)
 {
     if (k > 0 && k <= r - l + 1)
     {
@@ -150,23 +150,28 @@ lli partition(lli arr[], lli l, lli r, lli x)
 int main()
 {
     kira;
-    lli n;
-    cin >> n;
-    lli a[n];
-    lli x, y;
-    forz(i, n)
+    lli n, t;
+    cin >> t;
+    while (t--)
     {
-        cin >> x >> y;
-        a[i] = x * x + y * y;
+        cin >> n;
+        lli a[n];
+        lli x, y;
+        forz(i, n)
+        {
+            cin >> x >> y;
+            a[i] = x * x + y * y;
+        }
+        lli ans;
+        lli f = (n + 1) / 2;
+        if (n <= 140)
+        {
+            sort(a, a + n);
+            ans = a[f - 1];
+        }
+        else
+            ans = ksmall(a, 0, n - 1, f);
+        cout << sqrt(ans);
     }
-    lli ans;
-    lli f=(n+1)/2;
-    if(n<=140)
-    {
-        sort(a,a+n);
-        ans=a[f-1];
-    }
-    else ans=ksmall(a,0,n-1,f);
-    cout<<sqrt(ans);
     return 0;
 }
