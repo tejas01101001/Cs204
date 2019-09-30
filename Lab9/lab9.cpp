@@ -111,6 +111,12 @@ int main()
         pair<lli, lli> p1 = v[0], p2 = v.back();
         up.pb(p1);
         down.pb(p1);
+        if(p1==p2)
+        {
+            p1(1);
+            p2(p1.F,p1.S);
+            return 0;
+        }
         for (int i = 1; i < v.si; i++)
         {
             if (i == v.si - 1 || cw(p1, v[i], p2))
