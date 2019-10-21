@@ -123,19 +123,19 @@ int main()
         cin >> a[i][j];
         make(index(i, j));
     }
-    fore(i, 0, n + 1)
+    fore(i, 1, n)
     {
-        fore(j, 0, m + 1)
+        fore(j, 1, m)
         {
-            if (a[i][j] == a[i - 1][j] && a[i][j] != -1)
+            if (a[i][j] == a[i - 1][j])
                 merge(index(i, j), index(i - 1, j));
         }
     }
-    fore(i, 0, n + 1)
+    fore(i, 1, n)
     {
-        fore(j, 0, m + 1)
+        fore(j, 1, m)
         {
-            if (a[i][j - 1] == a[i][j] && a[i][j] != -1)
+            if (a[i][j - 1] == a[i][j])
                 merge(index(i, j - 1), index(i, j));
         }
     }
@@ -152,6 +152,6 @@ int main()
             }
         }
     }
-    p2(maxi,color);
+    p2(maxi, color);
     return 0;
 }
