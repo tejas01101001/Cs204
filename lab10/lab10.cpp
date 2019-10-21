@@ -139,16 +139,19 @@ int main()
                 merge(index(i, j - 1), index(i, j));
         }
     }
-    lli maxi = -1;
+    lli maxi = -1, color = -1;
     fore(i, 1, n)
     {
         fore(j, 1, m)
         {
             lli x = find(index(i, j));
             if (size[x] > maxi)
+            {
                 maxi = size[x];
+                color = a[i][j];
+            }
         }
     }
-    cout << maxi;
+    p2(maxi,color);
     return 0;
 }
