@@ -108,40 +108,35 @@ void merge(lli a, lli b)
         size[a] += size[b];
     }
 }
-int index(int i, int j)
-{
-    return i * m + j;
-}
 int main()
 {
     kira;
     cin >> n >> m;
     cin >> k;
-    vector<pair<lli, lli>> v[2];
+    vector<pair<pair<lli, lli>,lli>> v[2];
     forz(i, k)
     {
         cin >> x >> y;
-        v[0].pb({x, y});
-        v[1].pb({y, x});
-        make(index(x, y));
+        v[0].pb({{x, y},i});
+        v[1].pb({{y, x},i});
+        make(i);
     }
     sort(all(v[0]));
     sort(all(v[1]));
     for (int i = 0; i < k - 1; i++)
     {
-        if ((v[0][i].F == v[0][i + 1].F && v[0][i + 1].S == v[0][i].S + 1 )||(v[0][i].F == v[0][i + 1].F + 1 && v[0][i + 1].S == v[0][i].S))
-            merge(index(v[0][i].F, v[0][i].S), index(v[0][i + 1].F, v[0][i + 1].S));
+        if ((v[0][i].F.F == v[0][i + 1].F.F&& v[0][i + 1].F.S == v[0][i].F.S + 1 )||(v[0][i].F.F == v[0][i + 1].F.F + 1 && v[0][i + 1].F.S == v[0][i].F.S))
+            merge(v[0][i].S,v[0][i + 1].S);
     }
     for (int i = 0; i < k - 1; i++)
     {
-        if ((v[1][i].F == v[1][i + 1].F && v[1][i + 1].S == v[1][i].S + 1 )|| (v[1][i].F == v[1][i + 1].F + 1 && v[1][i + 1].S == v[1][i].S))
-            merge(index(v[1][i].S, v[1][i].F), index(v[1][i + 1].S, v[1][i + 1].F));
+        if ((v[1][i].F.F == v[1][i + 1].F.F&& v[1][i + 1].F.S == v[1][i].F.S + 1 )||(v[1][i].F.F == v[1][i + 1].F.F + 1 && v[1][i + 1].F.S == v[1][i].F.S))
+            merge(v[1][i].S,v[1][i + 1].S);
     }
      lli maxi = -1;
     forz(i, k)
     {
-        lli x = find(index(v[0][i].F, v[0][i].S));
-        p1(size[x]);
+        lli x = find(v[0][i].S);
         if (size[x] > maxi)
             maxi = size[x];
     }
