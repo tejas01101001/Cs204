@@ -107,7 +107,6 @@ int main()
     }
     bool isbi = true;
     queue<lli> q;
-    q.push(1);
     for (int i = 1; i <= n; i++)
     {
         if (color[i] == -1)
