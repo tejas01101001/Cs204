@@ -133,7 +133,7 @@ int main()
     {
         if (find(e.u) != find(e.v))
         {
-            cost =(cost*e.weight)%mod;
+            cost =(cost*(e.weight%mod))%mod;
             vk.pb(e);
             merge(e.u, e.v);
         }
