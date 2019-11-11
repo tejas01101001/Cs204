@@ -92,12 +92,12 @@ int main()
     cin >> n;
     string s, t, temp;
     lli pro[105][4];
-    memset(pro, 1, sizeof(pro));
+    forz(i, 105) forz(j, 4) pro[i][j] = 1;
     forz(j, 4)
     {
         for (int i = 1; i <= 100; i++)
         {
-            pro[i][j] = ((pro[i - 1][j] % tk) * p[j]) % tk;
+            pro[i][j] = (pro[i - 1][j] * p[j]) % tk;
         }
     }
     vector<string> v;
